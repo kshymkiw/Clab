@@ -1,0 +1,94 @@
+# topology documentation: http://containerlab.dev/lab-examples/srl-ceos/
+name: Arista-Common-Topology
+
+topology:
+  nodes:
+    ### Spines ###
+    Spine-1:
+      group: spine
+      kind: arista_ceos
+      image: ceos:4.32.1F
+      startup-config: /home/configs/Arista-Common-Topology-Configs/Spine-1.cfg
+      mgmt-ipv4: 172.20.20.101
+    Spine-2:
+      group: spine
+      kind: arista_ceos
+      image: ceos:4.32.1F
+      startup-config: /home/configs/Arista-Common-Topology-Configs/Spine-2.cfg
+      mgmt-ipv4: 172.20.20.102
+    ### Leafs ###
+    Leaf-1A:
+      group: leaf
+      kind: arista_ceos
+      image: ceos:4.32.1F
+      startup-config: /home/configs/Arista-Common-Topology-Configs/Leaf-1A.cfg
+      mgmt-ipv4: 172.20.20.201
+    Leaf-1B:
+      group: leaf
+      kind: arista_ceos
+      image: ceos:4.32.1F
+      startup-config: /home/configs/Arista-Common-Topology-Configs/Leaf-1B.cfg
+      mgmt-ipv4: 172.20.20.202
+    Leaf-2:
+      group: leaf
+      kind: arista_ceos
+      image: ceos:4.32.1F
+      startup-config: /home/configs/Arista-Common-Topology-Configs/Leaf-2.cfg
+      mgmt-ipv4: 172.20.20.203
+    Leaf-3A:
+      group: leaf
+      kind: arista_ceos
+      image: ceos:4.32.1F
+      startup-config: /home/configs/Arista-Common-Topology-Configs/Leaf-3A.cfg
+      mgmt-ipv4: 172.20.20.204
+    Leaf-3B:
+      group: leaf
+      kind: arista_ceos
+      image: ceos:4.32.1F
+      startup-config: /home/configs/Arista-Common-Topology-Configs/Leaf-3B.cfg
+      mgmt-ipv4: 172.20.20.205
+    ### Hosts ###
+    Outside:
+      group: host
+      kind: arista_ceos
+      image: ceos:4.32.1F
+      startup-config: /home/configs/Arista-Common-Topology-Configs/Outside.cfg
+      mgmt-ipv4: 172.20.20.206
+    Host-1:
+      group: host
+      kind: arista_ceos
+      image: ceos:4.32.1F
+      startup-config: /home/configs/Arista-Common-Topology-Configs/Host-1.cfg
+      mgmt-ipv4: 172.20.20.220
+    Host-1A:
+      group: host
+      kind: arista_ceos
+      image: ceos:4.32.1F
+      startup-config: /home/configs/Arista-Common-Topology-Configs/Host-1A.cfg
+      mgmt-ipv4: 172.20.20.221
+    Host-2:
+      group: host
+      kind: arista_ceos
+      image: ceos:4.32.1F
+      startup-config: /home/configs/Arista-Common-Topology-Configs/Host-2.cfg
+      mgmt-ipv4: 172.20.20.222
+
+  links:
+    - endpoints: ["Spine-1:eth1", "Leaf-1A:eth1"]
+    - endpoints: ["Spine-1:eth2", "Leaf-1B:eth1"]
+    - endpoints: ["Spine-1:eth3", "Leaf-2:eth1"]
+    - endpoints: ["Spine-1:eth4", "Leaf-3A:eth1"]
+    - endpoints: ["Spine-1:eth5", "Leaf-3B:eth1"]
+    - endpoints: ["Spine-2:eth1", "Leaf-1A:eth2"]
+    - endpoints: ["Spine-2:eth2", "Leaf-1B:eth2"]
+    - endpoints: ["Spine-2:eth3", "Leaf-2:eth2"]
+    - endpoints: ["Spine-2:eth4", "Leaf-3A:eth2"]
+    - endpoints: ["Spine-2:eth5", "Leaf-3B:eth2"]
+    - endpoints: ["Leaf-1A:eth8", "Leaf-1B:eth8"]
+    - endpoints: ["Leaf-3A:eth7", "Outside:eth1"]
+    - endpoints: ["Leaf-3B:eth7", "Outside:eth2"]
+    - endpoints: ["Leaf-3A:eth8", "Leaf-3B:eth8"]
+    - endpoints: ["Host-1:eth1", "Leaf-1A:eth5"]
+    - endpoints: ["Host-1:eth2", "Leaf-1B:eth5"]
+    - endpoints: ["Host-1A:eth1", "Leaf-1A:eth6"]
+    - endpoints: ["Host-2:eth1", "Leaf-2:eth5"]
