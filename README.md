@@ -1,6 +1,21 @@
 # Container Lab Topologies
 A place to keep Container Lab topologies for historical purposes and sharing with others
 
+## Installing Containerlab and cloning the repo[^2]
+Containerlab has a simple one line command to install it on your system:
+
+    curl -sL https://containerlab.dev/setup | sudo bash -s "all"
+
+Once the setup has been completed you will want to clone the repository
+
+    git clone https://github.com/kshymkiw/clabs.git
+
+Now you can run your topology with containerlab
+
+    sudo containerlab deploy /path/to/.clab.yml file
+
+## Topology Specific Notes
+
 ### Arista Common Topology
 This is a simple toplogy that can be used as a common base across multiple people and groups.
 
@@ -9,7 +24,5 @@ Some Notes about this toplogy:
 2.  Default ssh login is `admin/admin`
 3.  This topology **has** EVPN enabled and configured
 
-### Clone Topologies
-` git clone https://github.com/kshymkiw/clabs.git `
-
 [^1]:  ceos image is not provided, you will need to download it from [Arista](https://www.arista.com/en/support/software-download)
+[^2]:  More information on [Containerlab](https://containerlab.dev/)
