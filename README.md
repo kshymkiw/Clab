@@ -16,7 +16,7 @@ Now you can run your topology with containerlab
 
 ## Topology Specific Notes
 
-### Arista Common Topology
+### Arista DataCenter Topology
 This is a simple toplogy that can be used as a common base across multiple people and groups.
 
 Some Notes about this toplogy:
